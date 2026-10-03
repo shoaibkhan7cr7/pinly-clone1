@@ -38,9 +38,9 @@ export function Logo({
       aria-label={`${APP_NAME} home`}
       className={`flex shrink-0 items-center gap-2 rounded-full p-1 transition-colors duration-200 hover:bg-secondary ${className}`}
     >
-      <LogoMark size={32} />
+      <LogoMark size={28} />
       {showWordmark && (
-        <span className="pr-2 text-[22px] font-bold tracking-tight text-ink">
+        <span className="hidden sm:block pr-2 text-[22px] font-bold tracking-tight text-ink">
           {APP_NAME}
         </span>
       )}

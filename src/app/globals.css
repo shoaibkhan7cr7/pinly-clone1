@@ -84,14 +84,14 @@ body {
 }
 
 /* Pinterest-style focus ring: 4px translucent blue, never removed. */
-:focus-visible {
+:not(input):not(textarea):focus-visible {
   outline: none;
   box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.4);
   border-radius: inherit;
 }
 
 /* Hide the ring for pointer interactions only. */
-:focus:not(:focus-visible) {
+:not(input):not(textarea):focus:not(:focus-visible) {
   box-shadow: none;
 }
 
@@ -119,11 +119,22 @@ body {
 /* Two columns on phones — 236px would leave a single column below ~500px. */
 @media (max-width: 640px) {
   .masonry {
-    column-width: 160px;
+    column-width: 150px;
     column-gap: 8px;
   }
   .masonry > * {
     margin-bottom: 8px;
+  }
+}
+
+/* Single column on very small screens */
+@media (max-width: 400px) {
+  .masonry {
+    column-width: 140px;
+    column-gap: 6px;
+  }
+  .masonry > * {
+    margin-bottom: 6px;
   }
 }
 

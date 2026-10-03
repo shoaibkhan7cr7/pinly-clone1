@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Suspense, useTransition } from "react";
 import { TopNav } from "@/components/layout/TopNav";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import { ToastProvider, useToast } from "@/components/ui/Toast";
 import { signOut } from "@/app/(auth)/actions";
 import type { SessionProfile } from "@/lib/auth/session";
@@ -40,6 +41,7 @@ function Shell({
         <TopNav profile={profile} onSignOut={handleSignOut} />
       </Suspense>
       {children}
+      <SiteFooter />
     </>
   );
 }

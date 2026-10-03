@@ -13,7 +13,7 @@ export default async function Home() {
         <CategoryChips />
       </Suspense>
 
-      <main className="px-4 pb-16">
+      <main className="px-2 sm:px-4 pb-16">
         <h1 className="sr-only">Home feed</h1>
         <HomeFeed signedIn={profile !== null} />
       </main>

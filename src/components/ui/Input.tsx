@@ -36,7 +36,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
             ? "rounded-pill bg-field px-4"
             : "rounded-2xl border-2 bg-surface px-4",
           !pill && (error ? "border-accent" : "border-hairline"),
-          "focus-within:shadow-[0_0_0_4px_rgba(0,132,255,0.4)]",
+          "focus-within:ring-4 focus-within:ring-[#0084ff]/40",
         )}
       >
         {leading && (
@@ -103,7 +103,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           className={cn(
             "w-full resize-y rounded-2xl border-2 bg-surface px-4 py-3 text-[15px] text-ink outline-none",
             "placeholder:text-ink-muted transition-shadow duration-200",
-            "focus:shadow-[0_0_0_4px_rgba(0,132,255,0.4)]",
+            "focus:ring-4 focus:ring-[#0084ff]/40",
             error ? "border-accent" : "border-hairline",
             className,
           )}

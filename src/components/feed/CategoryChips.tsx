@@ -25,12 +25,12 @@ export function CategoryChips() {
   return (
     <nav
       aria-label="Categories"
-      className="scrollbar-thin flex gap-2 overflow-x-auto px-4 pb-4 pt-1"
+      className="scrollbar-thin flex gap-2 overflow-x-auto px-2 sm:px-4 pb-4 pt-1"
     >
       <Link
         href="/"
         className={cn(
-          "h-9 shrink-0 rounded-pill px-4 text-sm font-semibold leading-9 transition-colors duration-200",
+          "h-9 sm:h-10 shrink-0 rounded-pill px-3 sm:px-4 text-sm sm:text-base font-semibold leading-9 sm:leading-10 transition-colors duration-200",
           !active ? "bg-ink text-bg" : "bg-secondary text-ink hover:bg-secondary-hover",
         )}
       >
@@ -45,7 +45,7 @@ export function CategoryChips() {
             href={`/search?q=${encodeURIComponent(category)}`}
             aria-current={isActive ? "page" : undefined}
             className={cn(
-              "h-9 shrink-0 rounded-pill px-4 text-sm font-semibold leading-9 transition-colors duration-200",
+              "h-9 sm:h-10 shrink-0 rounded-pill px-3 sm:px-4 text-sm sm:text-base font-semibold leading-9 sm:leading-10 transition-colors duration-200",
               isActive
                 ? "bg-ink text-bg"
                 : "bg-secondary text-ink hover:bg-secondary-hover",

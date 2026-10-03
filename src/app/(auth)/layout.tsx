@@ -12,11 +12,11 @@ export default function AuthLayout({
     <ToastProvider>
       <BlurredFeedBackdrop />
 
-      <div className="flex min-h-screen items-center justify-center p-4">
+      <div className="flex min-h-screen items-center justify-center p-3 sm:p-4">
         <Link
           href="/"
           aria-label="Close and return to the feed"
-          className="fixed left-4 top-4 inline-flex size-11 items-center justify-center rounded-full bg-surface/90 text-ink shadow-sm backdrop-blur transition-colors duration-200 hover:bg-secondary"
+          className="fixed left-3 sm:left-4 top-3 sm:top-4 inline-flex size-10 sm:size-11 items-center justify-center rounded-full bg-surface/90 text-ink shadow-sm backdrop-blur transition-colors duration-200 hover:bg-secondary"
         >
           <X className="size-5" />
         </Link>

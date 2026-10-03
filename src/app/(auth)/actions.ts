@@ -1,8 +1,9 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
-import { isSupabaseConfigured, siteUrl } from "@/lib/env";
+import { autoConfirmEmail, isSupabaseConfigured, siteUrl } from "@/lib/env";
 import {
   loginSchema,
   signupSchema,
@@ -110,6 +111,33 @@ export async function signup(
 
   // With email confirmation enabled Supabase returns a user but no session.
   if (data.user && !data.session) {
+    if (autoConfirmEmail) {
+      try {
+        const admin = createAdminClient();
+        const { error: confirmError } = await admin.auth.admin.updateUserById(data.user.id, {
+          email_confirm: true,
+        });
+
+        if (confirmError) {
+          return { ok: false, message: "Couldn't finish setting up your account. Please try again." };
+        }
+
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+        if (signInError) {
+          return { ok: false, message: "Your account was created, but we couldn't sign you in. Please log in." };
+        }
+
+        revalidatePath("/", "layout");
+        return { ok: true, redirectTo: safeRedirect(next) };
+      } catch {
+        return { ok: false, message: "Couldn't finish setting up your account. Please try again." };
+      }
+    }
+
     return {
       ok: true,
       redirectTo: `/login?checkEmail=1&email=${encodeURIComponent(email)}`,

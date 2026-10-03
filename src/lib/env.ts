@@ -35,6 +35,10 @@ export function supabaseAnonKey(): string {
 export const googleOAuthEnabled: boolean =
   process.env.NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH === "true";
 
+/** Local-demo only: create password accounts without an email-confirmation step. */
+export const autoConfirmEmail: boolean =
+  process.env.SUPABASE_AUTO_CONFIRM_EMAIL === "true";
+
 export const siteUrl: string =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "http://localhost:3000";
 
